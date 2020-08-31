@@ -14,6 +14,8 @@ public class CelestialBody {
 	private double myMass;
 	private String myFileName;
 
+	private static int ourBodyCount;
+
 	/**
 	 * Create a Body from parameters	
 	 * @param xp initial x position
@@ -26,6 +28,18 @@ public class CelestialBody {
 	public CelestialBody(double xp, double yp, double xv,
 			             double yv, double mass, String filename){
 		// TODO: complete constructor
+		myXPos = xp;
+		myYPos = yp;
+		myXVel = xv;
+		myYVel = yv;
+		myMass = mass;
+		myFileName = filename;
+
+		ourBodyCount += 1;
+	}
+
+	public static int getCount(){
+		return ourBodyCount;
 	}
 
 	/**
@@ -74,7 +88,7 @@ public class CelestialBody {
 	 */
 	public double calcDistance(CelestialBody b) {
 		// TODO: complete method
-		return 0.0;
+		return Math.sqrt(b.myXPos*b.myYPos);
 	}
 
 	public double calcForceExertedBy(CelestialBody b) {
