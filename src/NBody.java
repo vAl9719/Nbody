@@ -1,5 +1,5 @@
 /**
- * @author YOUR NAME THE STUDENT IN 201
+ * @author Alyssa Zhao
  * 
  * Simulation program for the NBody assignment
  */
@@ -21,8 +21,8 @@ public class NBody {
 	
 		// TODO: read values at beginning of file to
 		// find the radius
-
-		double rad = 0.0;
+		s.nextInt();
+		double rad = s.nextDouble();
 		
 		s.close();
 		
@@ -43,22 +43,27 @@ public class NBody {
 			
 		// TODO: read # bodies, store in nb
 
-		int nb = 0;          // # bodies to be read
+		int nb = s.nextInt();
+		s.nextDouble();
+		// # bodies to be read
 
 		// TODO: Create array that can store nb CelestialBodies
 		// TODO: read and ignore radius
+		CelestialBody bodies[] = new CelestialBody[nb];
 
 		for(int k=0; k < nb; k++) {
 
 			// TODO: read data for each body
 			// TODO: construct new body object and add to array
+			CelestialBody c = new CelestialBody(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
+			bodies[k] = c;
 
 		}
 
 		s.close();
 
 		// TODO: return array of body objects read
-		return null;
+		return bodies;
 	}
 	public static void main(String[] args) throws FileNotFoundException{
 		double totalTime = 39447000.0;
@@ -89,6 +94,8 @@ public class NBody {
 			
 			// TODO: create double arrays xforces and yforces
 			//       to hold forces on each body
+			double[] xforces = new double[bodies.length];
+			double[] yforces = new double[bodies.length];
 
 
 			// TODO: loop over all bodies
@@ -97,12 +104,15 @@ public class NBody {
 
 			for(int k=0; k < bodies.length; k++) {
 				// code here
+				xforces[k] = bodies[k].calcNetForceExertedByX(bodies);
+				yforces[k] = bodies[k].calcNetForceExertedByY(bodies);
   			}
 
 			// TODO: loop over all bodies and call update
 			//       with dt and corresponding xforces and yforces values
 			for(int k=0; k < bodies.length; k++){
 				// code here
+				bodies[k].update(dt, xforces[k], yforces[k]);
 			}
 
 			StdDraw.clear();
@@ -112,6 +122,7 @@ public class NBody {
 
 			for(CelestialBody b : bodies){
 				// code here
+				b.draw();
 			}
 			StdDraw.show();
 			StdDraw.pause(10);
