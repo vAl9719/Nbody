@@ -66,7 +66,7 @@ public class NBody {
 		return bodies;
 	}
 	public static void main(String[] args) throws FileNotFoundException{
-		double totalTime = 39447000.0;
+		double totalTime = 2000000.0;
 		double dt = 25000.0;
 
 		String fname= "./data/planets.txt";
