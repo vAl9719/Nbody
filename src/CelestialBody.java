@@ -38,7 +38,7 @@ public class CelestialBody {
 		ourBodyCount += 1;
 	}
 
-	public static int getCount(){
+	private static int getCount(){
 		return ourBodyCount;
 	}
 
