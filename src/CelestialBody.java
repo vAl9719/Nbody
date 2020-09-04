@@ -49,19 +49,27 @@ public class CelestialBody {
 	 */
 	public CelestialBody(CelestialBody b){
 		// TODO: complete constructor
+		myXPos = b.getX();
+		myYPos = b.getY();
+		myXVel = b.getXVel();
+		myYVel = b.getYVel();
+		myMass = b.getMass();
+		myFileName = b.getName();
+
+		ourBodyCount += 1;
 	}
 
 	public double getX() {
 		// TODO: complete method
-		return 0.0;
+		return myXPos;
 	}
 	public double getY() {
 		// TODO: complete method
-		return 0.0;
+		return myYPos;
 	}
 	public double getXVel() {
 		// TODO: complete method
-		return 0.0;
+		return myXVel;
 	}
 	/**
 	 * Return y-velocity of this Body.
@@ -69,16 +77,16 @@ public class CelestialBody {
 	 */
 	public double getYVel() {
 		// TODO: complete method
-		return 0.0;
+		return myYVel;
 	}
 	
 	public double getMass() {
 		// TODO: complete method
-		return 0.0;
+		return myMass;
 	}
 	public String getName() {
 		// TODO: complete method
-		return "cow planet";
+		return myFileName;
 	}
 
 	/**
@@ -88,7 +96,9 @@ public class CelestialBody {
 	 */
 	public double calcDistance(CelestialBody b) {
 		// TODO: complete method
-		return Math.sqrt(b.myXPos*b.myYPos);
+		double xDist = Math.abs(b.myXPos - myXPos);
+		double yDist = Math.abs(b.myYPos - myXPos);
+		return Math.sqrt((xDist*xDist)+(yDist*yDist));
 	}
 
 	public double calcForceExertedBy(CelestialBody b) {
